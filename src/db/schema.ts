@@ -1,16 +1,13 @@
 import { pgTable, varchar, char, uuid, text, check, integer, pgEnum } from 'drizzle-orm/pg-core';
+import { user } from './auth-schema';
+export * from './auth-schema'
 // import { createSelectSchema, createUpdateSchema, createInsertSchema } from 'drizzle-zod';
-
-export const users = pgTable('users', {
-  id: uuid().primaryKey().defaultRandom(),
-  name: varchar({ length: 256 }).notNull(),
-  email: varchar({ length: 320 }).notNull().unique(),
-  password: char({ length: 97 }).notNull(),
-});
 
 export const restaurant = pgTable('restaurant', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  userId: uuid().references(() => users.id),
+  userId: text('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
   name: varchar({ length: 256 }).notNull(),
   location: varchar({ length: 512 }),
   type: char({ enum: ['sit down', 'fast food', 'cafe', 'food truck', 'other'] }),

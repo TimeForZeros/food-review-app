@@ -1,4 +1,5 @@
 import { betterAuth } from 'better-auth';
+import { nextCookies } from 'better-auth/next-js';
 import { argon2id, argon2Verify } from 'hash-wasm';
 import { randomBytes } from 'crypto';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
@@ -37,4 +38,5 @@ export const auth = betterAuth({
       verification,
     },
   }),
+  plugins: [nextCookies()],
 });

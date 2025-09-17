@@ -11,7 +11,7 @@ import type { Item } from '@/db';
 
 const ItemCard = ({ item }: { item: Item }) => {
   return (
-    <Card className='m-2 w-[20rem] h-[22rem]'>
+    <Card className='w-[18rem] h-[18rem] m-2'>
       <CardHeader>
         <CardTitle>{item.name}</CardTitle>
         {item.rating && <CardDescription>{item.rating}</CardDescription>}

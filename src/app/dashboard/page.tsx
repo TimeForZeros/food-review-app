@@ -10,11 +10,11 @@ const dummyItem: Item = {
 };
 
 const Dashboard = () => {
-  const arr = ['a', 'b', 'c', 'd'];
+  const arr = ['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd'];
   console.log(arr);
   return (
-    <section className="w-full h-full flex justify-center items-center">
-      <div className="grid m-4 border-2 min-w-[90%] min-h-[90%] rounded-2xl">
+      <section className=' w-[100%] flex justify-center items-center'>
+      <div className="flex flex-wrap m-2 border rounded-2xl shadow-md min-h-[20rem]">
         {arr.map((_, idx) => (
           <ItemCard key={idx} item={dummyItem} />
         ))}

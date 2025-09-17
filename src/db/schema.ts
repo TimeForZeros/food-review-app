@@ -1,7 +1,7 @@
 import { pgTable, varchar, char, uuid, text, check, integer, pgEnum } from 'drizzle-orm/pg-core';
 import { user } from './auth-schema';
-export * from './auth-schema'
-// import { createSelectSchema, createUpdateSchema, createInsertSchema } from 'drizzle-zod';
+export * from './auth-schema';
+import { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 
 export const restaurant = pgTable('restaurant', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -14,6 +14,8 @@ export const restaurant = pgTable('restaurant', {
   details: text(),
   rating: char({ enum: ['terrible', 'bad', 'mid', 'good', 'great'] }),
 });
+export type Restaurant = InferSelectModel<typeof restaurant>;
+export type NewRestaurant = InferInsertModel<typeof restaurant>;
 
 export const item = pgTable('item', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -21,9 +23,8 @@ export const item = pgTable('item', {
   restaurantId: integer().references(() => restaurant.id),
   type: char({ enum: ['drink', 'entree', 'combo', 'other'] }),
   details: text(),
+  ingredients: text().array(),
   rating: char({ enum: ['terrible', 'bad', 'mid', 'good', 'great'] }),
 });
-
-// export const userSelectSchema = createSelectSchema(users);
-// export const userInsertSchema = createInsertSchema(users);
-// export const userUpdateSchema = createUpdateSchema(users);
+export type Item = InferSelectModel<typeof item>;
+export type NewItem = InferInsertModel<typeof item>;

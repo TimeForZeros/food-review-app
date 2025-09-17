@@ -3,10 +3,9 @@ import AppSidebar from './app-sidebar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
+    <SidebarProvider >
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
+      <main className='pt-12 w-screen'>
         {children}
       </main>
     </SidebarProvider>

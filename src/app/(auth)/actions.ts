@@ -2,12 +2,6 @@ import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { authClient } from '@/lib/auth-client'; //import the auth client
 
-// const someAuthenticatedAction = async () => {
-//   'use server';
-//   const session = await auth.api.getSession({
-//     headers: await headers(),
-//   });
-// };
 type LoginDetails = {
   email: string;
   password: string;

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import LogOutButton from './(auth)/logout-button';
 
 type LinkButtonProps = {
   href: string;
@@ -18,6 +19,7 @@ const NavBar = () => {
       <nav>
         <LinkButton href={'/login'}>Log In</LinkButton>
         <LinkButton href={'/signup'}>Sign Up</LinkButton>
+        <LogOutButton />
       </nav>
     </header>
   );
